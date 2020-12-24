@@ -80,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
 
             for (String value:strings) {
                 Log.d(TAG, "doInBackground: "+value);
-                publishProgress(value);
+
+                //this has callBack method onProgressUpdate || it run's automatically
+                publishProgress(value);//transfer data to the UI thread
 
                 try {
                     Thread.sleep(1000);
@@ -92,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * publishProgress gives data to onProgressUpdate
+         * this is running on the main thread
+         * @param values
+         */
         @Override
         protected void onProgressUpdate(String... values) {
 
